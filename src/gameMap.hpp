@@ -1,9 +1,7 @@
 #pragma once
-#include "pixel.h"
-#include "snake.h"
-
-const int rowmax = 33;
-const int colmax = 100;
+#include "pixel.hpp"
+#include "snake.hpp"
+#include "conf.hpp"
 
 const char snake_body{'X'};
 const char empty{' '};
@@ -17,6 +15,8 @@ class gameMap {
     void update();
 
     void draw();
+
+    void clear_map();
 
     void update_snake(snake snk);
 

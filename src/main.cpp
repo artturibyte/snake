@@ -1,24 +1,13 @@
-#include "gameMap.h"
+#include "gameMap.hpp"
 #include <iostream>
 #include <ncurses.h>
 #include <chrono>
 #include <thread>
 
-
-
-int main() {
-    gameMap gm;
-    snake snak;
-
+void check_key_press(snake &snak) {
     int ch;
-
-    initscr();
-    keypad(stdscr, true);
-    noecho();
-        
-    while (true) {
-        //ch=getch();
-        switch((ch=getch())) {
+    if ((ch = getch()) != ERR) {
+            switch((ch=getch())) {
         case KEY_UP:
             //printw("Up") ; //key up
             snak.move_up();
@@ -38,13 +27,31 @@ int main() {
         default:
             break;
         }
+        }
+    }
+    
+
+int main() {
+    gameMap gm;
+    snake snak;
+
+
+    initscr();
+    keypad(stdscr, true);
+    noecho();
+    nodelay(stdscr, TRUE);
+    cbreak();
         
-        refresh();
-      
+    while (true) {
+        check_key_press(snak);
+
         gm.update_snake(snak);
         gm.draw();
+        refresh();
+        cbreak();
+
         snak.move_snake();
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     	
     }
     endwin();

@@ -1,20 +1,42 @@
-#include "snake.h"
+#include "snake.hpp"
+#include "conf.hpp"
 
 void snake::move_snake() {
         snake_part head = pos_list.back();
         switch (dir)
         {
         case right:
-            pos_list.push_back({head.row, head.col + 1});
+            if (head.col + 1 > colmax) {
+                pos_list.push_back({head.row, 0});
+            }
+            else {
+                pos_list.push_back({head.row, head.col + 1});
+            }
             break;
         case left:
-            pos_list.push_back({head.row, head.col - 1});
+            if (head.col - 1 < 0) {
+                pos_list.push_back({head.row, colmax});
+            }
+            else
+            {
+                pos_list.push_back({head.row, head.col - 1});
+            }
             break;
         case up:
-            pos_list.push_back({head.row - 1, head.col});
+            if (head.row - 1 < 0) {
+                pos_list.push_back({rowmax, head.col});
+            }
+            else {
+                pos_list.push_back({head.row - 1, head.col});
+            }
             break;
         case down:
-            pos_list.push_back({head.row + 1, head.col});
+            if (head.col + 1 > rowmax) {
+                pos_list.push_back({0, head.col});
+            }
+            else {
+                pos_list.push_back({head.row + 1, head.col});
+            }
             break;
         default:
             break;
