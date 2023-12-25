@@ -6,7 +6,7 @@ void snake::move_snake() {
         switch (dir)
         {
         case right:
-            if (head.col + 1 > colmax) {
+            if (head.col + 1 > colmax - 1) {
                 pos_list.push_back({head.row, 0});
             }
             else {
@@ -14,8 +14,8 @@ void snake::move_snake() {
             }
             break;
         case left:
-            if (head.col - 1 < 0) {
-                pos_list.push_back({head.row, colmax});
+            if (head.col <= 0) {
+                pos_list.push_back({head.row, colmax - 1});
             }
             else
             {
@@ -31,8 +31,8 @@ void snake::move_snake() {
             }
             break;
         case down:
-            if (head.col + 1 > rowmax) {
-                pos_list.push_back({0, head.col});
+            if (head.row + 1 > rowmax) {
+                pos_list.push_back({1, head.col});
             }
             else {
                 pos_list.push_back({head.row + 1, head.col});

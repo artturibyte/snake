@@ -18,7 +18,7 @@ class snake{
     public:
         std::list<snake_part> pos_list;
 
-    snake(): pos_list({{1,0}, {2,0}, {3,0}}) {}
+    snake(): pos_list({{2,1}, {2,2}, {2,3}}) {}
 
     void move_snake();
 
