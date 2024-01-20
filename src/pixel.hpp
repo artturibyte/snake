@@ -1,5 +1,7 @@
 
 
+
+
 class pixel {
     public:
     bool snake;
@@ -11,10 +13,8 @@ class pixel {
         snake = true;
     }
 
-    void contains_apple() {
-        apple = true;
+    void contains_apple(bool apple_state) {
+        apple = apple_state;
     }
-
-
 
 };

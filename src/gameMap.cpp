@@ -31,6 +31,7 @@ void gameMap::update_snake(snake& snake) {
 
     if (matrix[snake.pos_list.back().row][snake.pos_list.back().col].apple) {
         snake.extend_snake();
+        matrix[snake.pos_list.back().row][snake.pos_list.back().col].contains_apple(false);
     }
 
     for (auto el: snake.pos_list)    // Use a range-for loop
@@ -39,5 +40,5 @@ void gameMap::update_snake(snake& snake) {
 
 
 void gameMap::set_apple(int x, int y) {
-    matrix[x][y].contains_apple();
+    matrix[x][y].contains_apple(true);
 }
