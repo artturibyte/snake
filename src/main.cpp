@@ -6,8 +6,7 @@
 
 void check_key_press(snake &snak) {
     int ch;
-    if ((ch = getch()) != ERR) {
-            switch((ch=getch())) {
+    switch((ch=getch())) {
         case KEY_UP:
             //printw("Up") ; //key up
             snak.move_up();
@@ -27,13 +26,15 @@ void check_key_press(snake &snak) {
         default:
             break;
         }
-        }
+        
     }
     
 
 int main() {
     gameMap gm;
     snake snak;
+
+    gm.set_apple(5,5);
 
 
     initscr();
@@ -51,8 +52,8 @@ int main() {
         cbreak();
 
         snak.move_snake();
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    	
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        
     }
     endwin();
 }

@@ -1,2 +1,2 @@
-const int rowmax = 10;
-const int colmax = 20;
+const int rowmax = 20;
+const int colmax = 30;

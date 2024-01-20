@@ -22,6 +22,8 @@ class snake{
 
     void move_snake();
 
+    void extend_snake();
+
     void move_up() {
         dir = up;
     }

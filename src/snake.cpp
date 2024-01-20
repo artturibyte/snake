@@ -42,5 +42,9 @@ void snake::move_snake() {
             break;
         }
         pos_list.pop_front();
-        
+}
+
+void snake::extend_snake() {
+    snake_part tail = pos_list.front();
+    pos_list.push_front({tail.row - 1, tail.col - 1});
 }

@@ -1,10 +1,20 @@
+
+
 class pixel {
     public:
-    bool state;
+    bool snake;
+    bool apple;
 
-    pixel(): state(false) {}
+    pixel(): snake(false), apple(false) {}
 
     void contains_snake() {
-        state = true;
+        snake = true;
     }
+
+    void contains_apple() {
+        apple = true;
+    }
+
+
+
 };
