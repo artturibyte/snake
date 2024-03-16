@@ -9,19 +9,19 @@ void check_key_press(snake &snak) {
     switch((ch=getch())) {
         case KEY_UP:
             //printw("Up") ; //key up
-            snak.move_up();
+            snak.change_dir(direction::up);
             break;
         case KEY_DOWN:
             //printw("Down")  ;   // key down
-            snak.move_down();
+            snak.change_dir(direction::down);
             break;
         case KEY_LEFT:
             //printw( "Left" ) ;  // key left
-            snak.move_left();
+            snak.change_dir(direction::left);
             break;
         case KEY_RIGHT:
             //printw( "Right" );  // key right
-            snak.move_right();
+            snak.change_dir(direction::right);
             break;
         default:
             break;
@@ -34,7 +34,7 @@ int main() {
     gameMap gm;
     snake snak;
 
-    gm.set_apple(5,5);
+    gm.random_apple();
 
 
     initscr();

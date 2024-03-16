@@ -16,28 +16,14 @@ enum direction {
 class snake{
     direction dir = right;
     public:
-        std::list<snake_part> pos_list;
-
-    snake(): pos_list({{2,1}, {2,2}, {2,3}}) {}
+        std::list<snake_part> pos_list{{2,1}, {2,2}, {2,3}};  // init start snake
 
     void move_snake();
 
     void extend_snake();
 
-    void move_up() {
-        dir = up;
-    }
-
-    void move_down() {
-        dir = down;
-    }
-
-    void move_left() {
-        dir = left;
-    }
-
-    void move_right() {
-        dir = right;
+    void change_dir(direction new_dir) {
+        dir = new_dir;
     }
     
 };
