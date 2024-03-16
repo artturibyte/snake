@@ -1,6 +1,5 @@
 #include "gameMap.hpp"
-#include "iostream"
-#include <ncurses.h>
+
 //size
 
 //update
@@ -32,6 +31,9 @@ void gameMap::update_snake(snake& snake) {
     if (matrix[snake.pos_list.back().row][snake.pos_list.back().col].apple) {
         snake.extend_snake();
         matrix[snake.pos_list.back().row][snake.pos_list.back().col].contains_apple(false);
+        appleCount = appleCount - 1;
+        random_apple();
+        
     }
 
     for (auto el: snake.pos_list)    // Use a range-for loop
@@ -39,6 +41,13 @@ void gameMap::update_snake(snake& snake) {
 }
 
 
-void gameMap::set_apple(int x, int y) {
-    matrix[x][y].contains_apple(true);
+void gameMap::random_apple() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<int> rowDist(1, rowmax);
+    std::uniform_int_distribution<int> colDist(1, colmax);
+    if (appleCount < 1) {
+        matrix[rowDist(mt)][colDist(mt)].contains_apple(true);
+        appleCount += 1;
+    }
 }

@@ -2,6 +2,9 @@
 #include "pixel.hpp"
 #include "snake.hpp"
 #include "conf.hpp"
+#include <random>
+#include "iostream"
+#include <ncurses.h>
 
 const char snake_body{'X'};
 const char apple_mark{'O'};
@@ -10,6 +13,8 @@ const char empty{' '};
 class gameMap {
 
     pixel matrix[rowmax][colmax];
+    int appleCount{0};
+    
     public:
     gameMap() {}
 
@@ -21,6 +26,6 @@ class gameMap {
 
     void update_snake(snake& snk);
 
-    void set_apple(int x, int y);
+    void random_apple();
 
 };
