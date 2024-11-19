@@ -36,13 +36,12 @@ int main() {
 
     gm.random_apple();
 
-
     initscr();
     keypad(stdscr, true);
     noecho();
     nodelay(stdscr, TRUE);
     cbreak();
-        
+
     while (true) {
         check_key_press(snak);
 
