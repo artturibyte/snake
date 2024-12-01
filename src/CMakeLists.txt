@@ -6,5 +6,5 @@ include_directories(${CURSES_INCLUDE_DIR})
 
 target_link_libraries(game_of_snake ${CURSES_LIBRARIES})
 
-add_library(snake snake.cpp)
-add_library(game_map gameMap.cpp)
+add_library(game_of_snake snake.cpp)
+add_library(game_of_snake OBJECT gameMap.cpp)

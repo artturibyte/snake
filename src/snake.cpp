@@ -23,15 +23,15 @@ void snake::move_snake() {
             }
             break;
         case up:
-            if (head.row - 1 < 0) {
-                pos_list.push_back({rowmax, head.col});
+            if (head.row == 0) {
+                pos_list.push_back({rowmax -1, head.col});
             }
             else {
                 pos_list.push_back({head.row - 1, head.col});
             }
             break;
         case down:
-            if (head.row + 1 > rowmax) {
+            if (head.row == rowmax) {
                 pos_list.push_back({1, head.col});
             }
             else {

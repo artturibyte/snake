@@ -24,19 +24,18 @@ void gameMap::clear_map() {
     }
 }
 
-void gameMap::update_snake(snake& snake) {
+void gameMap::update_snake(snake& sk) {
     
     gameMap::clear_map();
-
-    if (matrix[snake.pos_list.back().row][snake.pos_list.back().col].apple) {
-        snake.extend_snake();
-        matrix[snake.pos_list.back().row][snake.pos_list.back().col].contains_apple(false);
+ 
+    if (matrix[sk.pos_list.back().row][sk.pos_list.back().col].apple) {
+        sk.extend_snake();
+        matrix[sk.pos_list.back().row][sk.pos_list.back().col].contains_apple(false);
         appleCount = appleCount - 1;
         random_apple();
-        
     }
 
-    for (auto el: snake.pos_list)    // Use a range-for loop
+    for (auto el: sk.pos_list)    // Use a range-for loop
         matrix[el.row][el.col].contains_snake();
 }
 
