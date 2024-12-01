@@ -44,13 +44,12 @@ int main() {
 
     while (true) {
         check_key_press(snak);
-
+        snak.move_snake();
         gm.update_snake(snak);
         gm.draw();
         refresh();
         cbreak();
 
-        snak.move_snake();
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
         
     }
