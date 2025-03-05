@@ -4,33 +4,9 @@
 #include <chrono>
 #include <thread>
 
-void check_key_press(snake &snak) {
-    int ch;
-    switch((ch=getch())) {
-        case KEY_UP:
-            //printw("Up") ; //key up
-            snak.change_dir(direction::up);
-            break;
-        case KEY_DOWN:
-            //printw("Down")  ;   // key down
-            snak.change_dir(direction::down);
-            break;
-        case KEY_LEFT:
-            //printw( "Left" ) ;  // key left
-            snak.change_dir(direction::left);
-            break;
-        case KEY_RIGHT:
-            //printw( "Right" );  // key right
-            snak.change_dir(direction::right);
-            break;
-        default:
-            break;
-        }
-        
-    }
-    
 
 int main() {
+    sf::RenderWindow game_window{{800, 500}, "game"};
     gameMap gm;
     snake snak;
 
@@ -43,7 +19,15 @@ int main() {
     cbreak();
 
     while (true) {
-        check_key_press(snak);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+        snak.change_dir(direction::up);
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+            snak.change_dir(direction::down);
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
+            snak.change_dir(direction::left);
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
+            snak.change_dir(direction::right);
+        }
         snak.move_snake();
         gm.update_snake(snak);
         gm.draw();
@@ -51,7 +35,9 @@ int main() {
         cbreak();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            break;
     }
     endwin();
 }

@@ -12,6 +12,7 @@ void gameMap::draw() {
 
             if (matrix[row][column].apple == true) {
                 mvaddch(row,column, apple_mark);
+                
             } else if(matrix[row][column].snake) {
                 mvaddch(row,column, snake_body);
             } else {

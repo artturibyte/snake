@@ -6,6 +6,7 @@
 #include "iostream"
 #include <ncurses.h>
 #include    <array>
+#include    <SFML/Graphics.hpp>
 
 const char snake_body{'X'};
 const char apple_mark{'O'};
